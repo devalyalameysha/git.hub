@@ -18,36 +18,36 @@ int main (){
 	string kewarganegaraan;
 	string berlaku_hingga;
 	
-	cout <<"Masukkan NIK : ";
-	cin>>nik;
-	cout <<"Masukkan nama : ";
-	cin>>nama;
-	cout <<"Masukkan tempat/tgl lahir : ";
-	cin>>tempat_tgl_lahir;
-	cout <<"Masukkan Jenis kelamin : ";
-	cin>>jenis_kelamin;
-	cout <<"Masukkan  Golongan darah : ";
-	cin>>gol_darah;
-	cout<<"Masukkan alamat :";
-	cin>>alamat;
-	cout<<"Masukkan RT/RW : ";
-	cin>>rt_rw;
-	cout <<"Masukkan Agama : ";
-	cin>>agama;
-	cout <<"Masukkan Status Perkawinan : ";
-	cin>>status_perkawinan;
-	cout <<"Masukkan Pekerjaan : ";
-	cin>>pekerjaan;
-	cout<<" Masukkan Kewarganegaraan";
-	cin>>kewarganegaraan;
-	cout<<"Masukkan Berlaku Hingga :";
-	cin>>berlaku_hingga;
+	 cout << "Masukkan Nama: ";
+    getline(cin,nama);
+    cout << "Masukkan Tempat/Tgl Lahir: ";
+    getline(cin,tempat_tgl_lahir);
+    cout << "Masukkan Jenis Kelamin: ";
+    getline(cin,jenis_kelamin);
+    cout << "Masukkan Golongan Darah (A/B/AB/O): ";
+    cin >> gol_darah;
+ 
+    cout << "Masukkan Alamat: ";
+    getline(cin, alamat);
+    cout << "Masukkan RT/RW: ";
+    getline(cin, rt_rw);
+    cout << "Masukkan Agama: ";
+    getline(cin, agama);
+    cout << "Masukkan Status Perkawinan: ";
+    getline(cin,status_perkawinan);
+    cout << "Masukkan Pekerjaan: ";
+    getline(cin,pekerjaan);
+    cout << "Masukkan Kewarganegaraan: ";
+    getline(cin, kewarganegaraan);
+    cout << "Masukkan Berlaku Hingga: ";
+    getline(cin, berlaku_hingga);
 	
-	cout<<"===========KARTU TANDA PENDUDUK========="<<endl;
+    cout << "\n================ KTP SIMULASI ================\n";
     cout << "NIK" << ": " << nik << endl;
     cout << "Nama" << ": " << nama << endl;
     cout << "Tempat/Tgl Lahir" << ": " << tempat_tgl_lahir << endl;
-    cout << "Jenis Kelamin" << ": " <<jenis_kelamin << "    Gol Darah: " <<gol_darah << endl;
+    cout << "Jenis Kelamin" << ": " <<jenis_kelamin<<endl;
+	cout << "Gol Darah: " <<gol_darah << endl;
     cout << "Alamat" << ": " <<alamat << endl;
     cout << "RT/RW" << ": " <<rt_rw << endl;
     cout << "Agama" << ": " <<agama << endl;
@@ -55,6 +55,8 @@ int main (){
     cout << "Pekerjaan" << ": " << pekerjaan << endl;
     cout << "Kewarganegaraan" << ": " <<kewarganegaraan << endl;
     cout << "Berlaku Hingga" << ": " <<berlaku_hingga << endl;
+    cout << "============================================\n";
+
     
     return 0;
 }
