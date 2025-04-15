@@ -17,7 +17,9 @@ int main (){
 	string pekerjaan;
 	string kewarganegaraan;
 	string berlaku_hingga;
-	
+    	
+    cout << "Masukkan NIK: ";
+    getline(cin,nik);
     cout << "Masukkan Nama: ";
     getline(cin,nama);
     cout << "Masukkan Tempat/Tgl Lahir: ";
