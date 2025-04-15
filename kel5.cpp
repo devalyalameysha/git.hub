@@ -18,7 +18,7 @@ int main (){
 	string kewarganegaraan;
 	string berlaku_hingga;
 	
-	 cout << "Masukkan Nama: ";
+    cout << "Masukkan Nama: ";
     getline(cin,nama);
     cout << "Masukkan Tempat/Tgl Lahir: ";
     getline(cin,tempat_tgl_lahir);
@@ -42,12 +42,12 @@ int main (){
     cout << "Masukkan Berlaku Hingga: ";
     getline(cin, berlaku_hingga);
 	
-    cout << "\n================ KTP SIMULASI ================\n";
+    cout << "\n================ KARTU TANDA PENDUDUK ================\n";
     cout << "NIK" << ": " << nik << endl;
     cout << "Nama" << ": " << nama << endl;
     cout << "Tempat/Tgl Lahir" << ": " << tempat_tgl_lahir << endl;
     cout << "Jenis Kelamin" << ": " <<jenis_kelamin<<endl;
-	cout << "Gol Darah: " <<gol_darah << endl;
+    cout << "Gol Darah: " <<gol_darah << endl;
     cout << "Alamat" << ": " <<alamat << endl;
     cout << "RT/RW" << ": " <<rt_rw << endl;
     cout << "Agama" << ": " <<agama << endl;
@@ -55,7 +55,7 @@ int main (){
     cout << "Pekerjaan" << ": " << pekerjaan << endl;
     cout << "Kewarganegaraan" << ": " <<kewarganegaraan << endl;
     cout << "Berlaku Hingga" << ": " <<berlaku_hingga << endl;
-    cout << "============================================\n";
+    cout << "=========================================================\n";
 
     
     return 0;
