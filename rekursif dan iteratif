@@ -1,0 +1,76 @@
+#include <iostream>
+using namespace std;
+
+class KeuanganAndi {
+private:
+    double uangSakuBulanan;
+    int jumlahBulan;
+    double pengeluaran[100]; // maksimal 100 bulan
+    double totalPengeluaran;
+    double totalTabungan;
+
+public:
+    KeuanganAndi(double uangSaku, int bulan) {
+        uangSakuBulanan = uangSaku;
+        jumlahBulan = bulan;
+        totalPengeluaran = 0.0;
+        totalTabungan = 0.0;
+    }
+
+    void inputPengeluaran() {
+        for (int i = 0; i < jumlahBulan; ++i) {
+            cout << "\nBulan ke-" << (i + 1) << endl;
+            cout << "Masukkan total pengeluaran bulan ini: ";
+            cin >> pengeluaran[i];
+
+            if (pengeluaran[i] > uangSakuBulanan) {
+                cout << "Pengeluaran melebihi uang saku! Disesuaikan dengan uang saku." << endl;
+                pengeluaran[i] = uangSakuBulanan;
+            }
+
+            totalPengeluaran += pengeluaran[i];
+            totalTabungan += (uangSakuBulanan - pengeluaran[i]);
+        }
+    }
+
+    void tampilkanIteratif() {
+        cout << "\n--- Data Keuangan (Iteratif) ---" << endl;
+        for (int i = 0; i < jumlahBulan; ++i) {
+            cout << "Bulan ke-" << (i + 1) << ": Pengeluaran = " << pengeluaran[i] << endl;
+        }
+        cout << "Total Pengeluaran: " << totalPengeluaran << endl;
+        cout << "Total Tabungan: " << totalTabungan << endl;
+    }
+
+    void tampilkanRekursif(int index = 0) {
+        if (index == 0) {
+            cout << "\n--- Data Keuangan (Rekursif) ---" << endl;
+        }
+        if (index < jumlahBulan) {
+            cout << "Bulan ke-" << (index + 1) << ": Pengeluaran = " << pengeluaran[index] << endl;
+            tampilkanRekursif(index + 1);
+        } else if (index == jumlahBulan) {
+            cout << "Total Pengeluaran: " << totalPengeluaran << endl;
+            cout << "Total Tabungan: " << totalTabungan << endl;
+        }
+    }
+};
+
+int main() {
+    double uangSaku;
+    int bulan;
+
+    cout << "Masukkan jumlah bulan: ";
+    cin >> bulan;
+
+    cout << "Masukkan uang saku bulanan: ";
+    cin >> uangSaku;
+
+    KeuanganAndi andi(uangSaku, bulan);
+
+    andi.inputPengeluaran();
+    andi.tampilkanIteratif();
+    andi.tampilkanRekursif();
+
+    return 0;
+}
