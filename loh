@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+class Operator {
+    friend ostream& operator<<(ostream&, Operator&);
+    friend istream& operator>>(istream&, Operator&);
+public:
+    long faktorial();           // Versi iteratif
+    long faktorial(int);        // Versi rekursif
+private:
+    int n;
+    long hasil;
+};
+
+// Faktorial dengan loop (iteratif)
+long Operator::faktorial() {
+    long fak = 1;
+    for (int i = 1; i <= n; i++)
+        fak = fak * i;
+    return fak;
+}
+
+// Faktorial dengan rekursi
+long Operator::faktorial(int n) {
+    if (n == 0 || n == 1)
+        return 1;
+    else
+        return n * faktorial(n - 1);
+}
+
+// Overload input
+istream& operator>>(istream& in, Operator& op) {
+    cout << "Masukkan nilai n: ";
+    in >> op.n;
+    return in;
+}
+
+// Overload output
+ostream& operator<<(ostream& out, Operator& op) {
+    out << "Hasil faktorial (iteratif): " << op.faktorial() << endl;
+    out << "Hasil faktorial (rekursif): " << op.faktorial(op.n) << endl;
+    return out;
+}
+
+// Fungsi utama
+int main() {
+    Operator op;
+    cin >> op;
+    cout << op;
+    return 0;
+}
