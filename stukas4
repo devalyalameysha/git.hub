@@ -1,0 +1,55 @@
+#include <iostream>
+using namespace std;
+
+class KeuanganAndi {
+private:
+    int uangSaku;
+    int pengeluaran[12]; // maksimal 12 bulan
+    int jumlahBulan;
+    int tabungan;
+
+public:
+    KeuanganAndi() {
+        uangSaku = 0;
+        jumlahBulan = 0;
+        tabungan = 0;
+        for (int i = 0; i < 12; i++) {
+            pengeluaran[i] = 0;
+        }
+    }
+
+    void inputData() {
+        cout << "Masukkan uang saku per bulan: ";
+        cin >> uangSaku;
+        cout << "Masukkan jumlah bulan: ";
+        cin >> jumlahBulan;
+
+        for (int i = 0; i < jumlahBulan; i++) {
+            cout << "Pengeluaran bulan ke-" << i + 1 << ": ";
+            cin >> pengeluaran[i];
+
+            int sisa = uangSaku - pengeluaran[i];
+            if (sisa > 0)
+                tabungan += sisa;
+        }
+    }
+
+    void tampilkanData() {
+        int totalPengeluaran = 0;
+        cout << "\n=== Rincian Pengeluaran Andi ===\n";
+        for (int i = 0; i < jumlahBulan; i++) {
+            cout << "Bulan " << i + 1 << ": Rp" << pengeluaran[i] << endl;
+            totalPengeluaran += pengeluaran[i];
+        }
+        cout << "------------------------------\n";
+        cout << "Total Pengeluaran: Rp" << totalPengeluaran << endl;
+        cout << "Total Tabungan: Rp" << tabungan << endl;
+    }
+};
+
+int main() {
+    KeuanganAndi andi;
+    andi.inputData();
+    andi.tampilkanData();
+    return 0;
+}
