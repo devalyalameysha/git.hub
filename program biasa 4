@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int jumlahBulan;
+    double uangSakuBulanan;
+
+    cout << "Masukkan jumlah bulan: ";
+    cin >> jumlahBulan;
+
+    cout << "Masukkan uang saku bulanan: ";
+    cin >> uangSakuBulanan;
+
+    double pengeluaran[100]; // asumsi maksimal 100 bulan
+    double totalPengeluaran = 0.0;
+    double totalTabungan = 0.0;
+
+    for (int i = 0; i < jumlahBulan; ++i) {
+        cout << "\nBulan ke-" << (i + 1) << endl;
+        cout << "Masukkan total pengeluaran bulan ini: ";
+        cin >> pengeluaran[i];
+
+        if (pengeluaran[i] > uangSakuBulanan) {
+            cout << "Pengeluaran melebihi uang saku! Disesuaikan dengan uang saku." << endl;
+            pengeluaran[i] = uangSakuBulanan;
+        }
+
+        double tabungan = uangSakuBulanan - pengeluaran[i];
+        totalTabungan += tabungan;
+        totalPengeluaran += pengeluaran[i];
+    }
+
+    cout << "\n--- Ringkasan Keuangan Andi ---" << endl;
+    for (int i = 0; i < jumlahBulan; ++i) {
+        cout << "Bulan ke-" << (i + 1) << ": Pengeluaran = " << pengeluaran[i] << endl;
+    }
+
+    cout << "Total Pengeluaran: " << totalPengeluaran << endl;
+    cout << "Total Tabungan: " << totalTabungan << endl;
+
+    return 0;
+}
