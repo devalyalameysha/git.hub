@@ -1,0 +1,76 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    int pilihan, jumlah;
+    double harga, totalHarga, ongkir, jarak;
+    string menu;
+
+    // Menampilkan daftar menu
+    cout << "=== Daftar Menu Rumah Makan ===" << endl;
+    cout << "1. Ayam Geprek\t: Rp 21.000" << endl;
+    cout << "2. Ayam Goreng\t: Rp 17.000" << endl;
+    cout << "3. Udang Goreng\t: Rp 19.000" << endl;
+    cout << "4. Cumi Goreng\t: Rp 20.000" << endl;
+    cout << "5. Ayam Bakar\t: Rp 25.000" << endl;
+
+    // Input pilihan menu
+    cout << "\nMasukkan pilihan menu (1-5): ";
+    cin >> pilihan;
+
+    cout << "Masukkan jumlah pesanan: ";
+    cin >> jumlah;
+
+    cout << "Masukkan jarak rumah Anda (dalam KM): ";
+    cin >> jarak;
+
+    // Menentukan harga berdasarkan pilihan
+    switch (pilihan) {
+        case 1:
+            menu = "Ayam Geprek";
+            harga = 21000;
+            break;
+        case 2:
+            menu = "Ayam Goreng";
+            harga = 17000;
+            break;
+        case 3:
+            menu = "Udang Goreng";
+            harga = 19000;
+            break;
+        case 4:
+            menu = "Cumi Goreng";
+            harga = 20000;
+            break;
+        case 5:
+            menu = "Ayam Bakar";
+            harga = 25000;
+            break;
+        default:
+            cout << "Pilihan tidak valid." << endl;
+            return 0;
+    }
+
+    // Menghitung total harga makanan
+    totalHarga = harga * jumlah;
+
+    // Menentukan ongkos kirim
+    if (jarak < 3.0) {
+        ongkir = 15000;
+    } else {
+        ongkir = 25000;
+    }
+
+    // Slip pembayaran
+    cout << "\n=== Slip Pembayaran ===" << endl;
+    cout << "Menu\t\t: " << menu << endl;
+    cout << "Harga Satuan\t: Rp " << fixed << setprecision(0) << harga << endl;
+    cout << "Jumlah\t\t: " << jumlah << endl;
+    cout << "Total Harga\t: Rp " << totalHarga << endl;
+    cout << "Ongkos Kirim\t: Rp " << ongkir << endl;
+    cout << "Total Bayar\t: Rp " << totalHarga + ongkir << endl;
+    cout << "==============================" << endl;
+
+    return 0;
+}
