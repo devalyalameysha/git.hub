@@ -1,0 +1,75 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+const int MAKS = 20;
+const int BIAYA_PER_SKS = 125000;
+const float DISKON = 0.15;
+
+string namaMatkul[MAKS];
+int sks[MAKS];
+
+// Fungsi rekursif untuk input data mata kuliah dan SKS
+void inputMatkul(int index, int total) {
+    if (index == total) return;
+
+    cout << "\nMata Kuliah ke-" << index + 1 << endl;
+    cout << "Nama Mata Kuliah : ";
+    getline(cin, namaMatkul[index]);
+    cout << "Jumlah SKS       : ";
+    cin >> sks[index];
+    cin.ignore();
+
+    inputMatkul(index + 1, total);  // Pemanggilan rekursif
+}
+
+// Fungsi rekursif untuk menghitung total SKS
+int hitungTotalSKS(int index, int total) {
+    if (index == total) return 0;
+    return sks[index] + hitungTotalSKS(index + 1, total);  // Pemanggilan rekursif
+}
+
+// Fungsi rekursif untuk menampilkan daftar mata kuliah
+void tampilkanMatkul(int index, int total) {
+    if (index == total) return;
+    cout << index + 1 << ". " << namaMatkul[index] << " (" << sks[index] << " SKS)" << endl;
+    tampilkanMatkul(index + 1, total);
+}
+
+int main() {
+    string nim, nama;
+    int jumlahMatkul;
+
+    cout << "Masukkan NIM Mahasiswa  : ";
+    getline(cin, nim);
+    cout << "Masukkan Nama Mahasiswa : ";
+    getline(cin, nama);
+    cout << "Jumlah Mata Kuliah (maks 20): ";
+    cin >> jumlahMatkul;
+    cin.ignore();
+
+    if (jumlahMatkul > MAKS) {
+        cout << "Jumlah mata kuliah melebihi batas maksimum!" << endl;
+        return 1;
+    }
+
+    inputMatkul(0, jumlahMatkul);  // Mulai input rekursif
+
+    int totalSKS = hitungTotalSKS(0, jumlahMatkul);
+    int totalBiaya = totalSKS * BIAYA_PER_SKS;
+    float potongan = totalBiaya * DISKON;
+    float totalBayar = totalBiaya - potongan;
+
+    // Output
+    cout << "\n========== RINCIAN PEMBAYARAN ==========" << endl;
+    cout << "NIM              : " << nim << endl;
+    cout << "Nama Mahasiswa   : " << nama << endl;
+    cout << "\nDaftar Mata Kuliah:" << endl;
+    tampilkanMatkul(0, jumlahMatkul);  // Menampilkan daftar rekursif
+    cout << "\nTotal SKS        : " << totalSKS << endl;
+    cout << "Total Biaya      : Rp " << totalBiaya << endl;
+    cout << "Diskon 15%       : Rp " << potongan << endl;
+    cout << "Total Pembayaran : Rp " << totalBayar << endl;
+
+    return 0;
+}
