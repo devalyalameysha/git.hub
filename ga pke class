@@ -1,0 +1,50 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    const int MAKS = 20;
+    const int BIAYA_PER_SKS = 125000;
+    const float DISKON = 0.15;
+
+    string nim, nama;
+    string namaMatkul[MAKS];
+    int sks[MAKS];
+    int jumlahMatkul, totalSKS = 0;
+
+    cout << "Masukkan NIM Mahasiswa: ";
+    getline(cin, nim);
+    cout << "Masukkan Nama Mahasiswa: ";
+    getline(cin, nama);
+    cout << "Jumlah Mata Kuliah diambil (maks 20): ";
+    cin >> jumlahMatkul;
+
+    cin.ignore();
+    for (int i = 0; i < jumlahMatkul; i++) {
+        cout << "\nMata Kuliah ke-" << i + 1 << endl;
+        cout << "Nama Mata Kuliah : ";
+        getline(cin, namaMatkul[i]);
+        cout << "Jumlah SKS       : ";
+        cin >> sks[i];
+        totalSKS += sks[i];
+        cin.ignore();
+    }
+
+    int totalBiaya = totalSKS * BIAYA_PER_SKS;
+    float diskon = totalBiaya * DISKON;
+    float totalBayar = totalBiaya - diskon;
+
+    cout << "\n========== RINCIAN PEMBAYARAN ==========" << endl;
+    cout << "NIM              : " << nim << endl;
+    cout << "Nama Mahasiswa   : " << nama << endl;
+    cout << "\nDaftar Mata Kuliah:" << endl;
+    for (int i = 0; i < jumlahMatkul; i++) {
+        cout << i + 1 << ". " << namaMatkul[i] << " (" << sks[i] << " SKS)" << endl;
+    }
+    cout << "\nTotal SKS        : " << totalSKS << endl;
+    cout << "Total Biaya      : Rp " << totalBiaya << endl;
+    cout << "Diskon 15%       : Rp " << diskon << endl;
+    cout << "Total Pembayaran : Rp " << totalBayar << endl;
+
+    return 0;
+}
