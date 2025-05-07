@@ -1,0 +1,45 @@
+#include<iostream>
+#include <cmath>
+using namespace std;
+
+class hitung{
+public:
+	int proses();
+	void input();
+	
+private:
+	int n;
+	float rumus, jumlah, total;
+};
+void hitung::input(){
+	cout<<"Tentukkan nilai n: ";
+	cin>>n;
+	cout<<endl;
+}
+
+int hitung::proses(){
+	jumlah=0;
+	total=0;
+	rumus=1;
+		
+	for (int j=1; j<=n;j++){
+	int penyebut=2*j;
+	cout<<"1/"<<penyebut;
+		if(j<n)
+		cout<<" + ";
+		jumlah+=1.0/penyebut;
+	}
+		cout<<endl<<endl<<"Hasil penjumlahan deret= "<<jumlah<<endl;
+		return jumlah;
+	}
+	
+	int main(){
+		cout<<"Program sederhana menghitung jumlah dari rumus: "<<endl;
+		cout<<"(1/2)+(1/3)+(1/4)+...+(1/n)"<<endl<<endl;
+		
+		hitung deret;
+		deret.input();
+		deret.proses();
+		
+		return 0;
+	}
