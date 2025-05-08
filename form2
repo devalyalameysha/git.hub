@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 03</title>
+</head>
+<body>
+    <div style="border-radius: 10px; background-color: aliceblue; border: solid black 1px; padding: 20px; ">
+        <form>
+            <h2 align="center" style="background-color: aquamarine; border: solid black 1px; padding: 20px;"><b>Formulir Pendaftaran</br></h2>
+            <label for="name">Nama</label>
+            <input type="text" name="name" placeholder="Masukkan Nama" size="30" required> <br><br>
+            <label for="gender">Pilih jenis kelamin</label>
+            <input type="radio" name="gender" value="male" required>
+            <label for="male">Pria</label>
+            <input type="radio" name="gender" value="female">
+            <label for="female">wanita</label><br></br>
+            <label for="band">Prodi:</label>
+            <select name="band" size="1">
+            <option value="informatika">Informatika</option>
+            <option value="teknik sipil">Teknik Sipil </option>
+            <option value="psikologi">Psikologi</option>
+        </select> <br></br>
+
+        <label for="alamat">alamat: </label>
+        <textarea name="alamat" id="" cols="50" rows="5" placeholder="Masukkan alamat"></textarea> <br> </br>
+
+        <input type="checkbox" name="persetujuan" required>
+        <label for="persetujuan">Dengan ini anda menyetujui syarat dan ketentuan</label> <br><br>
+        <input type="submit" value="Kirim"> 
+        <input type="reset" value="Reset Form">
+        </form>
+    </div>
+</body>
+</html>
