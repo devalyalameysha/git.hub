@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pendaftaran</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <font face="verdana">
+        <table>
+            <tr>
+                <td><img src="uad.png"width="100" height="100"></td>
+                <td><h1>UNIVERSITAS AHMAD DAHLAN</h1>
+                    <br>Jl. Kapas 9, Semaki, Umbulharjo, Yogyakarta 55166</td>
+            </tr>
+        </table>
+    
+        </p>
+    
+        <h1>FORM PENDAFTARAN</h1>
+        <ul type="circle">
+            <li><h2>BIODATA</h2></li>
+            <form action="tes2.html" target="_blank">
+                <table>
+                <tr>
+                    <td>Nama </td><td><input type="text" name="nama" placeholder="Masukkan Nama" required></td>
+                </tr>
+                <tr>
+                    <td>Alamat Asal </td><td><textarea name=" Alamat Asal" placeholder="Alamat Asal Anda" required></textarea></td>
+                </tr>
+                <tr>
+                    <td>Alamat Sekarang </td><td><textarea name=" Alamat Sekarang" placeholder="Alamat Anda Sekarang" required></textarea></td>
+                </tr>
+                <tr>
+                    <td>Agama    </td>
+                    <td>
+                        <select>
+                            <option name="agama"value="Islam">Islam</option>
+                            <option name="agama"value="Kristen">Kristen</option>
+                            <option name="agama"value="Katolik">Katolik</option>
+                            <option name="agama"value="Hindu">Hindu</option>
+                            <option name="agama"value="Buddha">Buddha</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Hobi  </td>
+                <td>
+                    <input type="checkbox" name="Hobi" value="Baca">Baca
+                    <input type="checkbox" name="Hobi" value="Memasak">Memasak
+                    <input type="checkbox" name="Hobi" value="Menggambar">Menggambar
+                    <input type="checkbox" name="Hobi" value="Lainnya">Lainnya
+                 </td>
+                 <tr>
+            </table>
+        
+            <li><h2>ORANG TUA</h2></li>
+            <table>
+                <tr>
+                    <td>Nama </td><td><input type="text" name="nama" placeholder="Masukkan Nama" required></td>
+                </tr>
+                <tr>
+                    <td>Pekerjaan</td><td><input type="text" name="kerja" placeholder="Pekerjaan Orang Tua Anda" required></td>
+                </tr>
+                <tr>
+                    <td>Penghasilan</td>
+                    <td>
+                        <select>
+                         <option value="kelas1">>Rp1.000.000</option>
+                         <option value="kelas2">Rp1.000.000 - Rp2.000.000</option>
+                         <option value="kelas3">Rp2.000.000 - Rp3.000.000</option>
+
+                        </select>
+                    </td>
+                </tr>
+            </table>
+          
+       
+            <li><h2>ASAL SEKOLAH</h2></li>
+            <table>
+                <tr>
+                    <td>Asal Sekolah</td> <td><input type="text" name="sekolah"></td>
+                </tr>
+            </table>
+            <li><h2>NILAI RAPOT</h2></li>
+        </ul>
+        <button>Kirim</button>
+    </form>
+    </font>
+</body>
+</html>
