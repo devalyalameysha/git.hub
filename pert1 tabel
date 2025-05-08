@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabel</title>
+</head>
+<body>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th rowspan="2">Nama</th>
+                <th colspan="2">Jenis Kelamin</th>
+                <th rowspan="2">Foto Profil</th>
+                <th rowspan="2">Link Profile</th>
+            </tr>
+            <tr>
+                <th>Laki-Laki</th>
+                <th>Perempuan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Denis</td>
+                <td>Iya</td>
+                <td>Bukan</td>
+                <td><img src="boy.png" alt="Gambar Denis" width="80"></td>
+                <td><a href="denis.html" target="_blank">Profile Denis</a></td>
+            </tr>
+                <td>Putri</td>
+                <td>Bukan</td>
+                <td>Iya</td>
+                <td><img src="girl.png" alt="Gambar Putri" width="80"></td>
+                <td><a href="putri.html" target="_blank">Profile Putri </a></td>
+            <tr>
+                <td>Adit</td>
+                <td>Iya</td>
+                <td>Bukan</td>
+                <td><img src="man.png" alt="Gambar Adit" width="80"></td>
+                <td><a href="adit.html" target="_blank">Profile Adit </a></td>
+            </tr>
+            <tr>
+                <td>Amba</td>
+                <td>Iya</td>
+                <td>Bukan</td>
+                <td><img src="boy1.png" alt="Gambar Amba" width="80"></td>
+                <td><a href="amba.html" target="_blank">Profile Amba </a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
