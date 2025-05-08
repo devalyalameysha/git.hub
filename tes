@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pendaftaran</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form action="tes2.html" target="_blank">    
+        <label for="fname">Nama </label>
+        <input type="text" id="fname" name="fname " ><br><br>
+        <label for="lname">NIM  </label>
+        <input type="text" id="lname" name="lname"><br><br>
+        <button>
+            Klik Disini
+        </button>      
+</form>
+</body>
+</html>
