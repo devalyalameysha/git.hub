@@ -1,0 +1,112 @@
+#include <iostream>
+using namespace std;
+
+class Sorting {
+    friend istream& operator>>(istream& in, Sorting& a);
+    friend ostream& operator<<(ostream& out, Sorting& a);
+public:
+    void selection_sort();
+    int pencarianBiner(int low, int high);
+private:
+    void minimum(int, int, int&);
+    void tukar(int&, int&);
+    int data[10], n;
+};
+
+// Fungsi mencari nilai minimum
+void Sorting::minimum(int dari, int n, int &tempat) {
+    int min = data[dari];
+    tempat = dari;
+    for (int i = dari + 1; i < n; i++) {
+        if (data[i] < min) {
+            min = data[i];
+            tempat = i;
+        }
+    }
+}
+
+// Fungsi menukar dua nilai
+void Sorting::tukar(int &a, int &b) {
+    int temp;
+    temp = a;
+    a = b;
+    b = temp;
+}
+
+// Fungsi selection sort
+void Sorting::selection_sort() {
+    int t;
+    for (int i = 0; i < n; i++) {
+        minimum(i, n, t);
+        tukar(data[i], data[t]);
+    }
+}
+
+// Fungsi menampilkan baris saat pencarian biner
+void cetakBaris(int low, int middle, int high) {
+    cout << "Low: " << low << ", Middle: " << middle << ", High: " << high << endl;
+}
+
+// Fungsi pencarian biner
+int Sorting::pencarianBiner(int low, int high) {
+    int middle;
+    int kunciPencarian;
+    cout << "Masukkan nilai yang ingin dicari: ";
+    cin >> kunciPencarian;
+
+    while (low <= high) {
+        middle = (low + high) / 2;
+        cetakBaris(low, middle, high);
+        if (kunciPencarian == data[middle])
+            return middle;
+        else if (kunciPencarian < data[middle])
+            high = middle - 1;
+        else
+            low = middle + 1;
+    }
+    return -1;
+}
+
+// Overload input stream >>
+istream& operator>>(istream& in, Sorting& a) {
+    cout << "Masukkan jumlah data (maksimal 10): ";
+    in >> a.n;
+    for (int i = 0; i < a.n; i++) {
+        cout << "Data ke-" << i + 1 << ": ";
+        in >> a.data[i];
+    }
+    return in;
+}
+
+// Overload output stream <<
+ostream& operator<<(ostream& out, Sorting& a) {
+    out << "Data: ";
+    for (int i = 0; i < a.n; i++) {
+        out << a.data[i] << " ";
+    }
+    out << endl;
+    return out;
+}
+
+// Fungsi utama
+int main() {
+    Sorting s;
+    cin >> s;
+
+    cout << "\nData sebelum disorting:\n";
+    cout << s;
+
+    s.selection_sort();
+
+    cout << "\nData setelah disorting:\n";
+    cout << s;
+
+    int hasil = s.pencarianBiner(0, s.pencarianBiner(0, 9)); // Pencarian data
+
+    if (hasil != -1)
+        cout << "Data ditemukan pada indeks ke-" << hasil << endl;
+    else
+        cout << "Data tidak ditemukan." << endl;
+
+    return 0;
+}
