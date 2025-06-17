@@ -1,0 +1,130 @@
+#include <iostream>
+using namespace std;
+
+class Mahasiswa {
+private:
+    string nim;
+    string nama;
+
+public:
+    friend istream& operator>>(istream& in, Mahasiswa& m) {
+        cout << "Masukkan NIM  : ";
+        getline(in, m.nim);
+        cout << "Masukkan Nama : ";
+        getline(in, m.nama);
+        return in;
+    }
+
+    friend ostream& operator<<(ostream& out, const Mahasiswa& m) {
+        out << "NIM  : " << m.nim << endl;
+        out << "Nama : " << m.nama << endl;
+        out << "----------------------\n";
+        return out;
+    }
+
+  
+    friend void urutkanNIMAscending(Mahasiswa data[], int jumlahData);
+    friend void binarySearch(Mahasiswa data[], int jumlahData);
+};
+
+void urutkanNIMAscending(Mahasiswa data[], int jumlahData) {
+    for (int i = 0; i < jumlahData - 1; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j < jumlahData; j++) {
+            if (data[j].nim < data[minIndex].nim) {
+                minIndex = j;
+            }
+        }
+        if (minIndex != i) {
+            Mahasiswa temp = data[i];
+            data[i] = data[minIndex];
+            data[minIndex] = temp;
+        }
+    }
+
+    cout << "Data berhasil diurutkan secara Ascending berdasarkan NIM.\n";
+    for (int i = 0; i < jumlahData; i++) {
+        cout << data[i];
+    }
+}
+
+void binarySearch(Mahasiswa data[], int jumlahData) {
+    cin.ignore();
+    string nimCari;
+    cout << "Masukkan NIM yang dicari: ";
+    getline(cin, nimCari);
+
+    int kiri = 0, kanan = jumlahData - 1;
+    bool ketemu = false;
+
+    while (kiri <= kanan) {
+        int tengah = (kiri + kanan) / 2;
+        if (data[tengah].nim == nimCari) {
+            cout << "\nData ditemukan:\n";
+            cout << data[tengah];
+            ketemu = true;
+            break;
+        }
+        if (data[tengah].nim < nimCari) {
+            kiri = tengah + 1;
+        } else {
+            kanan = tengah - 1;
+        }
+    }
+
+    if (!ketemu) {
+        cout << "Data dengan NIM " << nimCari << " tidak ditemukan.\n";
+    }
+}
+
+int main() {
+    Mahasiswa data[100];
+    int jumlahData = 0;
+    int pilihan;
+
+    do {
+        cout << "\n===== MENU MAHASISWA =====\n";
+        cout << "1. Input Data Mahasiswa\n";
+        cout << "2. Urutkan NIM Secara Ascending\n";
+        cout << "3. Cari Data berdasarkan NIM\n";
+        cout << "4. Keluar\n";
+        cout << "Pilih menu: ";
+        cin >> pilihan;
+        cin.ignore();
+
+        switch (pilihan) {
+            case 1: {
+                int jumlah;
+                cout << "Masukkan jumlah data mahasiswa (minimal 5): ";
+                cin >> jumlah;
+                cin.ignore();
+
+                if (jumlah < 5) {
+                    cout << "Jumlah data harus minimal 5!\n";
+                    break;
+                }
+
+                for (int i = 0; i < jumlah; i++) {
+                    cout << "Mahasiswa ke-" << (jumlahData + 1) << endl;
+                    cin >> data[jumlahData];
+                    jumlahData++;
+                }
+                cout << "Data berhasil dimasukkan!\n";
+                break;
+            }
+            case 2:
+                urutkanNIMAscending(data, jumlahData);
+                break;
+            case 3:
+                binarySearch(data, jumlahData);
+                break;
+            case 4:
+                cout << "Program selesai. TerimaKasih :)\n";
+                break;
+            default:
+                cout << "Pilihan tidak valid!\n";
+        }
+    } while (pilihan != 4);
+
+    return 0;
+}
