@@ -1,0 +1,97 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+class Matriks {
+	friend ostream& operator <<(ostream&, Matriks&);
+	friend istream& operator <<(istream&, Matriks&);
+	
+public :
+	void bacaMatriks();
+	void matriksJumlah(const Matriks&, const Matriks&);
+	void perkalianMatriks(const Matriks&, const Matriks&);
+	void cetakMatriks;
+	
+private:
+	int A[10][10];
+	int baris, kolom;
+};
+
+void Matriks::bacaMatriks(){
+	for (int i = 0; i <baris; i++){
+		for (int j = 0; j < kolom;j++){
+			cout << "Data [" << i + 1 << "," << j+1<<"]: ";
+		cin >> A[i][j];
+		}
+	}
+}
+
+void Matriks::matriksJumlah(const Matriks& matriks1, const Matriks& matriks2){
+	baris = matriks1.baris;
+	kolom = matriks2.kolom;
+	for (int i = 0; i <baris; i++){
+		for (int j = 0; j < kolom;j++){
+			A[i][j] = matriks1.A[i][j] + matriks2.A[i][j];
+		}
+	}
+}
+
+void Matriks::perkalianMatriks(const Matriks& matriks1, const Matriks& matriks2){
+	int barkol = matriks.kolom;
+	baris = matriks1.baris;
+	kolom = matriks2.kolom;
+	
+	for (int i = 0; i <baris; i++){
+		for (int j = 0; j < kolom;j++){
+			A[i][j] = matriks1.A[i][j] * matriks2.A[i][j];
+		}
+	}
+}
+
+void Matriks::cetakMatriks(){
+	for (int i = 0; i <baris; i++){
+		for (int j = 0; j < kolom;j++){
+			cout << setw(5)<< A[i][j] << " ";
+		}
+		cout << endl;
+	}
+}
+
+istream& operator >> (istream& in, Matriks& A){
+	cout << "Banyak Baris : ";
+	in >> A.baris;
+	cout << "Banyak Kolom : ";
+	in >>A.kolom;
+	cout << "Masukkan data Matriks\n";
+	A.bacaMatriks();
+	cout << "Matriks yang dibuat adalah :\n";
+	A.cetakMatriks();
+}
+
+ostream& operator >> (ostream& out, Matriks& A){
+	for (int i = 0; i <baris; i++){
+		for (int j = 0; j < kolom;j++){
+			out << setw(5)<< A.A[i][j] << " ";
+		}
+		out << endl;
+	}
+	return out;
+}
+
+int main (){
+	Matriks matriks1, matriks2;
+	Matriks jumlah;
+	
+	cout << "Masukkan data matriks I\n";
+	cin >> matriks1;
+	
+	cout << "Masukkan data matriks II\n";
+	cin >> matriks2;
+	
+	jumlah.matriksJumlah(matriks1, matrisk2);
+	cout << "\nHasil Penjumlah :\n";
+	jumlah.cetakMatriks();
+	
+}
+
