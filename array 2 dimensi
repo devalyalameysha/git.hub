@@ -1,0 +1,64 @@
+#include <iostream>
+using namespace std;
+
+const int BARIS = 3;
+const int KOLOM = 3;
+const int UKURAN = 18;
+
+void inputMatriks(int matriks[BARIS][KOLOM], char nama) {
+    cout << "Masukkan elemen matriks " << nama << " (3x3):\n";
+    for (int i = 0; i < BARIS; i++) {
+        for (int j = 0; j < KOLOM; j++) {
+            cout << "Elemen [" << i << "][" << j << "]: ";
+            cin >> matriks[i][j];
+        }
+    }
+}
+
+void gabungMatriks(int A[BARIS][KOLOM], int B[BARIS][KOLOM], int C[UKURAN]) {
+    int k = 0;
+    // Salin dari A ke C
+    for (int i = 0; i < BARIS; i++)
+        for (int j = 0; j < KOLOM; j++)
+            C[k++] = A[i][j];
+
+    // Salin dari B ke C
+    for (int i = 0; i < BARIS; i++)
+        for (int j = 0; j < KOLOM; j++)
+            C[k++] = B[i][j];
+}
+
+void bubbleSort(int C[UKURAN]) {
+    for (int i = 0; i < UKURAN - 1; i++) {
+        for (int j = 0; j < UKURAN - 1 - i; j++) {
+            if (C[j] > C[j + 1]) {
+                int temp = C[j];
+                C[j] = C[j + 1];
+                C[j + 1] = temp;
+            }
+        }
+    }
+}
+
+void tampilkanArray(int C[UKURAN]) {
+    cout << "\nArray gabungan setelah diurutkan:\n";
+    for (int i = 0; i < UKURAN; i++) {
+        cout << C[i] << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    int A[BARIS][KOLOM];
+    int B[BARIS][KOLOM];
+    int C[UKURAN];
+
+    inputMatriks(A, 'A');
+    inputMatriks(B, 'B');
+
+    gabungMatriks(A, B, C);
+    bubbleSort(C);
+    tampilkanArray(C);
+
+    return 0;
+}
