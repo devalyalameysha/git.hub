@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+
+class node {
+public:
+    int data;
+    node* berikut;
+};
+
+void tambahNode(node*& kepala, int nilai) {
+    node* baru = new node;
+    (*baru).data = nilai;   
+    (*baru).berikut = NULL;
+
+    if (kepala == NULL) {
+        kepala = baru;
+    } else {
+        node* jalan = kepala;
+        while ((*jalan).berikut != NULL) {
+            jalan = (*jalan).berikut;
+        }
+        (*jalan).berikut = baru;
+    }
+}
+
+void cetakList(node* kepala) {
+    node* jalan = kepala;
+    int i = 1;
+    while (jalan != NULL) {
+        cout << "Data ke-" << i << " : " << (*jalan).data << endl;
+        jalan = (*jalan).berikut;
+        i++;
+    }
+    cout << "Banyak data yang dimasukkan: " << i - 1 << endl;
+}
+
+int main() {
+    node* kepala = NULL;
+    int n;
+    cout << "Berapa banyak node yang mau dibuat? ";
+    cin >> n;
+
+    for (int i = 0; i < n; i++) {
+        int nilai;
+        cout << "Masukkan isi data node ke-" << (i + 1) << ": ";
+        cin >> nilai;
+        tambahNode(kepala, nilai);
+    }
+
+    cout << "\nIsi data linked list:\n";
+    cetakList(kepala);
+
+    return 0;
+}
