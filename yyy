@@ -1,0 +1,77 @@
+#include <iostream>
+using namespace std;
+
+void tambah(int *x, int *y, int *hasil) { *hasil = *x + *y; }
+
+void kurang(int *x, int *y, int *hasil) { *hasil = *x - *y; }
+
+void kali(int *x, int *y, int *hasil) { *hasil = *x * *y; }
+
+void bagi(int *x, int *y, double *hasil) { *hasil = (double)*x / *y; }
+
+void bilPrima(int *x) {
+  bool prima = true;
+  if (*x <= 1) {
+    prima = false;
+  } else {
+    for (int i = 2; i * i <= *x; i++) {
+      if (*x % i == 0) {
+        prima = false;
+        break;
+      }
+    }
+  }
+
+  if (prima)
+    cout << *x << " adalah bilangan Prima" << endl;
+  else
+    cout << *x << " bukan bilangan Prima" << endl;
+}
+
+void genapGanjil(int *x) {
+  if (*x % 2 == 0)
+    cout << *x << " adalah bilangan Genap" << endl;
+  else
+    cout << *x << " adalah bilangan Ganjil" << endl;
+}
+
+long long faktorial(int *x) {
+  long long hasil = 1;
+  for (int i = 1; i <= *x; i++) {
+    hasil *= i;
+  }
+  return hasil;
+}
+
+int main() {
+  int A;
+  int B;
+  int hasil;
+
+  cout << "Masukkan Angka Pertama  : ";
+  cin >> A;
+  cout << "Masukkan Angka Kedua    : ";
+  cin >> B;
+
+  tambah(&A, &B, &hasil);
+  cout << A << " + " << B << " = " << hasil << endl;
+
+  kurang(&A, &B, &hasil);
+  cout << A << " - " << B << " = " << hasil << endl;
+
+  bagi(&A, &B, (double*)&hasil); 
+  cout << A << " * " << B << " = " << hasil << endl;
+
+  // Tambahan analisis angka
+  cout << "\n=== Analisis Angka Pertama (" << A << ") ===" << endl;
+  genapGanjil(&A);
+  cout << "Faktorial dari " << A << " = " << faktorial(&A) << endl;
+  bilPrima(&A);
+
+  cout << "\n=== Analisis Angka Kedua (" << B << ") ===" << endl;
+  genapGanjil(&B);
+  cout << "Faktorial dari " << B << " = " << faktorial(&B) << endl;
+  bilPrima(&B);
+
+  return 0;
+}
