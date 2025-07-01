@@ -2,34 +2,49 @@
 #include <string>
 using namespace std;
 
+const int MAX_MAHASISWA = 100;
+
 int main() {
-  string nama;
-  int nilai;
-  int totalNilai = 0;
-  const int MAX_MAHASISWA = 100;
-  int jumlahMahasiswa = 0;
-  int nilaiMahasiswa[MAX_MAHASISWA];
+    string* namaMahasiswa = new string[MAX_MAHASISWA];
+    int* nilaiMahasiswa = new int[MAX_MAHASISWA];
+    int jumlahMahasiswa;
+    int totalNilai = 0;
 
-  cout << "Masukkan jumlah mahasiswa: ";
-  cin >> jumlahMahasiswa;
-  cin.ignore();
-
-  for (int i = 0; i < jumlahMahasiswa; i++) {
-    cout << "Masukkan nama mahasiswa ke-" << i + 1 << ": ";
-    getline(cin, nama);
-    cout << "Masukkan nilai mahasiswa ke-" << i + 1 << ": ";
-    cin >> nilai;
+    cout << "Masukkan jumlah mahasiswa: ";
+    cin >> jumlahMahasiswa;
     cin.ignore();
-    totalNilai += nilai;
-    nilaiMahasiswa[i] = nilai;
-  }
-  double rataRata = static_cast<double>(totalNilai) / jumlahMahasiswa;
-  cout << "Rata-rata nilai mahasiswa: " << rataRata << endl;
-  return 0;
-}
 
-rapikan program 
-menerima input nama dan nilai mahasiswa
-menghitung rata-rata nilai nilai mahasiswa 
-menampilkan nama-nama mahasiswa yang nilainya di atas rata-rata
-harus ada pointernya
+    // Input nama dan nilai
+    for (int i = 0; i < jumlahMahasiswa; i++) {
+        cout << "Masukkan nama mahasiswa ke-" << i + 1 << ": ";
+        getline(cin, *(namaMahasiswa + i)); // menggunakan pointer
+        cout << "Masukkan nilai mahasiswa ke-" << i + 1 << ": ";
+        cin >> *(nilaiMahasiswa + i); // menggunakan pointer
+        cin.ignore();
+        totalNilai += *(nilaiMahasiswa + i);
+    }
+
+    // Hitung rata-rata
+    double rataRata = static_cast<double>(totalNilai) / jumlahMahasiswa;
+    cout << "\nRata-rata nilai mahasiswa: " << rataRata << endl;
+
+    // Tampilkan mahasiswa dengan nilai di atas rata-rata
+    cout << "\nMahasiswa dengan nilai di atas rata-rata:\n";
+    bool ada = false;
+    for (int i = 0; i < jumlahMahasiswa; i++) {
+        if (*(nilaiMahasiswa + i) > rataRata) {
+            cout << "- " << *(namaMahasiswa + i) << " (" << *(nilaiMahasiswa + i) << ")" << endl;
+            ada = true;
+        }
+    }
+
+    if (!ada) {
+        cout << "Tidak ada mahasiswa dengan nilai di atas rata-rata.\n";
+    }
+
+    // Dealokasi memori
+    delete[] namaMahasiswa;
+    delete[] nilaiMahasiswa;
+
+    return 0;
+}
