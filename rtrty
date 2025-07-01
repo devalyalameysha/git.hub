@@ -1,0 +1,159 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+const int MAX_MAHASISWA = 100;
+
+class Mahasiswa {
+public:
+  string nim;
+  string nama;
+  string prodi;
+  string noTelepon;
+
+  void inputData() {
+    cout << "Masukkan NIM        : ";
+    getline(cin, nim);
+    cout << "Masukkan Nama       : ";
+    getline(cin, nama);
+    cout << "Masukkan Prodi      : ";
+    getline(cin, prodi);
+    cout << "Masukkan No. Telepon: ";
+    getline(cin, noTelepon);
+  }
+
+  void tampilData(int index) {
+    cout << "\nData mahasiswa ke-" << index + 1 << " : " << endl;
+    cout << "NIM         : " << nim << endl;
+    cout << "Nama        : " << nama << endl;
+    cout << "Prodi       : " << prodi << endl;
+    cout << "No. Telepon : " << noTelepon << endl;
+  }
+};
+
+class SistemMahasiswa {
+private:
+  Mahasiswa daftarMahasiswa[MAX_MAHASISWA];
+  int jumlahMahasiswa;
+
+public:
+  SistemMahasiswa() { jumlahMahasiswa = 0; }
+
+  void tambahMahasiswa() {
+    if (jumlahMahasiswa >= MAX_MAHASISWA) {
+      cout << "Kapasitas mahasiswa telah Penuh.\n";
+      return;
+    }
+    cin.ignore();
+    Mahasiswa mhs;
+    mhs.inputData();
+    daftarMahasiswa[jumlahMahasiswa] = mhs;
+    jumlahMahasiswa++;
+    cout << "Data mahasiswa berhasil ditambahkan.\n";
+  }
+
+  void tampilkanSemuaMahasiswa() {
+    if (jumlahMahasiswa == 0) {
+      cout << "Belum ada data mahasiswa.\n";
+      return;
+    }
+
+    cout << "\nDaftar Mahasiswa\n";
+    for (int i = 0; i < jumlahMahasiswa; ++i) {
+      daftarMahasiswa[i].tampilData(i);
+    }
+  }
+
+  void cariMahasiswaByNIM() {
+    if (jumlahMahasiswa == 0) {
+      cout << "Data mahasiswa kosong.\n";
+      return;
+    }
+
+    cin.ignore();
+    string nimDicari;
+    cout << "Masukkan NIM yang dicari: ";
+    getline(cin, nimDicari);
+
+    bool ditemukan = false;
+    for (int i = 0; i < jumlahMahasiswa; i++) {
+      if (daftarMahasiswa[i].nim == nimDicari) {
+        cout << "\nMahasiswa ditemukan :\n";
+        daftarMahasiswa[i].tampilData(i);
+        ditemukan = true;
+        break;
+      }
+    }
+
+    if (!ditemukan) {
+      cout << "Mahasiswa dengan NIM " << nimDicari << " tidak ditemukan.\n";
+    }
+  }
+
+  void urutkanAscending() {
+    for (int i = 0; i < jumlahMahasiswa - 1; i++) {
+      for (int j = i + 1; j < jumlahMahasiswa; j++) {
+        if (daftarMahasiswa[i].nim > daftarMahasiswa[j].nim) {
+          swap(daftarMahasiswa[i], daftarMahasiswa[j]);
+        }
+      }
+    }
+    cout << "Data berhasil diurutkan secara ascending berdasarkan NIM.\n";
+  }
+
+  void urutkanDescending() {
+    for (int i = 0; i < jumlahMahasiswa - 1; i++) {
+      for (int j = i + 1; j < jumlahMahasiswa; j++) {
+        if (daftarMahasiswa[i].nim < daftarMahasiswa[j].nim) {
+          swap(daftarMahasiswa[i], daftarMahasiswa[j]);
+        }
+      }
+    }
+    cout << "Data berhasil diurutkan secara descending berdasarkan NIM.\n";
+  }
+};
+
+int main() {
+  SistemMahasiswa sistem;
+  int pilihan;
+
+  do {
+    cout << "\n=== Menu Data Mahasiswa ===\n";
+    cout << "1. Tambah Data Mahasiswa\n";
+    cout << "2. Tampilkan Semua Data\n";
+    cout << "3. Cari Mahasiswa Berdasarkan NIM\n";
+    cout << "4. Urutkan Data (Ascending)\n";
+    cout << "5. Urutkan Data (Descending)\n";
+    cout << "6. Keluar\n";
+    cout << "Pilihan Anda: ";
+    cin >> pilihan;
+
+    switch (pilihan) {
+    case 1:
+      sistem.tambahMahasiswa();
+      break;
+    case 2:
+      sistem.tampilkanSemuaMahasiswa();
+      break;
+    case 3:
+      sistem.cariMahasiswaByNIM();
+      break;
+    case 4:
+      sistem.urutkanAscending();
+      sistem.tampilkanSemuaMahasiswa();
+      break;
+    case 5:
+      sistem.urutkanDescending();
+      sistem.tampilkanSemuaMahasiswa();
+      break;
+    case 6:
+      cout << "Terima kasih.\n";
+      break;
+    default:
+      cout << "Pilihan tidak valid. Silakan coba lagi.\n";
+    }
+
+  } while (pilihan != 6);
+
+  return 0;
+}
