@@ -1,0 +1,78 @@
+#include <iostream>
+using namespace std;
+
+// Cek genap atau ganjil
+void cekGenapGanjil(int x) {
+    if (x % 2 == 0)
+        cout << x << " adalah bilangan Genap" << endl;
+    else
+        cout << x << " adalah bilangan Ganjil" << endl;
+}
+
+// Hitung faktorial
+long long faktorial(int x) {
+    long long hasil = 1;
+    for (int i = 1; i <= x; i++) {
+        hasil *= i;
+    }
+    return hasil;
+}
+
+// Cek bilangan prima
+bool cekPrima(int x) {
+    if (x <= 1) return false;
+    for (int i = 2; i * i <= x; i++) {
+        if (x % i == 0)
+            return false;
+    }
+    return true;
+}
+
+int main() {
+    int A;
+    int B;
+    int hasil;
+    double hasilBagi;
+
+    cout << "Masukkan Angka Pertama  : ";
+    cin >> A;
+    cout << "Masukkan Angka Kedua    : ";
+    cin >> B;
+
+    // Operasi matematika dasar
+    hasil = A + B;
+    cout << A << " + " << B << " = " << hasil << endl;
+
+    hasil = A - B;
+    cout << A << " - " << B << " = " << hasil << endl;
+
+    hasil = A * B;
+    cout << A << " * " << B << " = " << hasil << endl;
+
+    if (B != 0) {
+        hasilBagi = (double)A / B;
+        cout << A << " / " << B << " = " << hasilBagi << endl;
+    } else {
+        cout << "Pembagian tidak dapat dilakukan karena pembagi adalah 0" << endl;
+    }
+
+    // Cek bilangan A
+    cout << "\n=== Analisis Angka Pertama (" << A << ") ===" << endl;
+    cekGenapGanjil(A);
+    cout << "Faktorial dari " << A << " = " << faktorial(A) << endl;
+    if (cekPrima(A))
+        cout << A << " adalah bilangan Prima" << endl;
+    else
+        cout << A << " bukan bilangan Prima" << endl;
+
+    // Cek bilangan B
+    cout << "\n=== Analisis Angka Kedua (" << B << ") ===" << endl;
+    cekGenapGanjil(B);
+    cout << "Faktorial dari " << B << " = " << faktorial(B) << endl;
+    if (cekPrima(B))
+        cout << B << " adalah bilangan Prima" << endl;
+    else
+        cout << B << " bukan bilangan Prima" << endl;
+
+    return 0;
+}
