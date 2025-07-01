@@ -1,0 +1,35 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+  string nama;
+  int nilai;
+  int totalNilai = 0;
+  const int MAX_MAHASISWA = 100;
+  int jumlahMahasiswa = 0;
+  int nilaiMahasiswa[MAX_MAHASISWA];
+
+  cout << "Masukkan jumlah mahasiswa: ";
+  cin >> jumlahMahasiswa;
+  cin.ignore();
+
+  for (int i = 0; i < jumlahMahasiswa; i++) {
+    cout << "Masukkan nama mahasiswa ke-" << i + 1 << ": ";
+    getline(cin, nama);
+    cout << "Masukkan nilai mahasiswa ke-" << i + 1 << ": ";
+    cin >> nilai;
+    cin.ignore();
+    totalNilai += nilai;
+    nilaiMahasiswa[i] = nilai;
+  }
+  double rataRata = static_cast<double>(totalNilai) / jumlahMahasiswa;
+  cout << "Rata-rata nilai mahasiswa: " << rataRata << endl;
+  return 0;
+}
+
+rapikan program 
+menerima input nama dan nilai mahasiswa
+menghitung rata-rata nilai nilai mahasiswa 
+menampilkan nama-nama mahasiswa yang nilainya di atas rata-rata
+harus ada pointernya
