@@ -1,0 +1,78 @@
+#include <iostream>
+using namespace std;
+
+// Class Node
+class Node {
+public:
+    int data;
+    Node* next;
+
+    Node(int nilai) {
+        data = nilai;
+        next = NULL;
+    }
+};
+
+// Class LinkedList
+class LinkedList {
+private:
+    Node* head;
+
+public:
+    LinkedList() {
+        head = NULL;
+    }
+
+    // Fungsi menambah node di belakang
+    void tambahBelakang(int nilai) {
+        Node* baru = new Node(nilai);
+        if (head == NULL) {
+            head = baru;
+        } else {
+            Node* bantu = head;
+            while (bantu->next != NULL) {
+                bantu = bantu->next;
+            }
+            bantu->next = baru;
+        }
+    }
+
+    // Fungsi menampilkan semua data
+    void tampilkan() {
+        cout << "Isi Linked List: ";
+        Node* bantu = head;
+        while (bantu != NULL) {
+            cout << bantu->data << " -> ";
+            bantu = bantu->next;
+        }
+        cout << "NULL" << endl;
+    }
+
+    // Fungsi menghitung jumlah elemen
+    int hitungJumlahElemen() {
+        int jumlah = 0;
+        Node* bantu = head;
+        while (bantu != NULL) {
+            jumlah++;
+            bantu = bantu->next;
+        }
+        return jumlah;
+    }
+};
+
+int main() {
+    LinkedList list;
+
+    // Menambahkan beberapa elemen
+    list.tambahBelakang(5);
+    list.tambahBelakang(15);
+    list.tambahBelakang(25);
+
+    // Tampilkan isi linked list
+    list.tampilkan();
+
+    // Hitung dan tampilkan jumlah elemen
+    cout << "Jumlah elemen dalam linked list: " << list.hitungJumlahElemen() << endl;
+
+    return 0;
+}
